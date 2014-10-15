@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1350" height="620"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+	
+		var start_x = 100; //mid_x-dec*7; //100;
+		
+		var start_y = 500;
+		var end_x = 1200;
+		var end_y = 500;
+        var mid_x = 650;
+        var dec = 60;
+		var last_x = mid_x+dec*7; //1000
+		var begin_x = mid_x-dec*7;
+		var stair_dec = 25;
+	   var radius = 100;
+	  
+	  
+      
+	  
+	  context.beginPath();
+      context.rect(0, 0, 1350, 620);
+      context.fillStyle = 'black';
+      context.fill();
+      context.stroke();	
+	
+	  context.beginPath();
+      context.arc(mid_x, 150, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = 'white';
+      context.fill();
+	 	
+	  for(var j=0;j<=1;j++){
+	  context.beginPath();
+      context.moveTo(start_x+stair_dec*j, start_y+stair_dec*j);
+      context.lineTo(end_x-stair_dec*j, end_y+stair_dec*j);
+	  context.strokeStyle = '#ffffff';
+      context.lineWidth = 6;
+	  context.stroke();
+	  
+	  }	
+	  
+	  context.beginPath();
+      context.moveTo(start_x+200+dec*0, start_y);
+      context.lineTo(mid_x, end_y-dec*1);
+	  context.lineTo(last_x-dec*0, end_y);
+	  context.strokeStyle = '#ffffff';
+      context.stroke();
+	  var grd = context.createLinearGradient(mid_x, end_y-dec*1, mid_x, end_y-dec*0);
+      grd.addColorStop(0, '#ffffff');   
+      grd.addColorStop(1, '#696969');
+      context.fillStyle = grd;	
+	  context.fill();
+	  
+	  for(var i=1; i<=7; i++){
+	  
+	  context.beginPath();
+      context.moveTo(begin_x+dec*(i-1), start_y);
+      context.lineTo(mid_x, end_y-dec*i);
+	  context.lineTo(last_x-dec*(i-1), end_y);
+	  context.strokeStyle = '#ffffff';
+	  context.lineWidth = 4;
+      context.stroke();
+	  
+	  //var grd = context.createLinearGradient( begin_x+dec*(i-1), start_y, mid_x, start_y);
+	  var grd = context.createLinearGradient( begin_x+dec*(i-1), start_y, begin_x+dec*(i-1)+70, start_y);
+      grd.addColorStop(0, '#ffffff');   
+      grd.addColorStop(1, '#696969');
+      
+	  //grd = context.createLinearGradient(last_x-dec*(i-1), start_y, mid_x, start_y);
+	  var grd = context.createLinearGradient(last_x-dec*(i-1), start_y, last_x-dec*(i-1)-70, start_y);
+      grd.addColorStop(0, '#ffffff');   
+      grd.addColorStop(1, '#696969');
+      context.fillStyle = grd;	
+	  context.fill();
+	  }
+	 
+	  
+	</script>
+  </body>
+</html>
