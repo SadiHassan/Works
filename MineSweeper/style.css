@@ -1,0 +1,8 @@
+body {
+            background-color: white;
+        }
+        canvas {
+            border:5px solid gray;
+			margin-left:350px;
+			margin-top:60px;
+        }
